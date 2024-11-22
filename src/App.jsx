@@ -11,7 +11,7 @@ function App() {
 
   const getUsers = async () => {
     try {
-      const res = await axios.get("http://44.225.181.72:8080/api/person");
+      const res = await axios.get("https://provaback-right.onrender.com/api/person");
       setList(res.data);
       console.log(res.data); 
     } catch (error) {
@@ -21,9 +21,10 @@ function App() {
 
   const registerUser = async () => {
     try { 
-      await axios.post("http://44.225.181.72:8080/api/person",{
+      var res = await axios.post("https://provaback-right.onrender.com/api/person",{
         name, lastname, salary
       });
+      console.log(res)
     } catch (error) {
       console.error("Erro ao inserir", error);
     }
@@ -31,7 +32,7 @@ function App() {
 
   const deleteUser = async (id) => {
     try { 
-      await axios.delete(`http://44.225.181.72:8080/api/person/${id}`);
+      await axios.delete(`https://provaback-right.onrender.com/api/person/${id}`);
       getUsers()
     } catch (error) {
       console.error("Erro ao inserir", error);
@@ -60,7 +61,7 @@ function App() {
         <td className="px-6 py-4">{user.lastname}</td>
         <td className="px-6 py-4">R${user.salary}</td>
         <td class="px-6 py-4">
-          <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={() => {deleteUser(user.id)}}>Delete</a>
+          <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={() => {deleteUser(user._id)}}>Delete</a>
         </td>
       </tr>
     ));
