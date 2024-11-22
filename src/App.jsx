@@ -31,7 +31,7 @@ function App() {
 
   const deleteUser = async (id) => {
     try { 
-      await axios.delete(`http://44.225.181.72:8080/api/person/_${id}`);
+      await axios.delete(`http://44.225.181.72:8080/api/person/${id}`);
       getUsers()
     } catch (error) {
       console.error("Erro ao inserir", error);
